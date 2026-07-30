@@ -228,7 +228,7 @@
       margin-bottom: 1.2rem;
     }
 
-    /* Badge Créateur Style Insta */
+    /* Badge Créateur (Lien vers sous-page) */
     .creator-badge {
       display: flex;
       align-items: center;
@@ -237,7 +237,8 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
       margin-bottom: 1.2rem;
       transition: background 0.2s;
     }
@@ -295,121 +296,6 @@
     .btn-wa:hover {
       background: #059669;
     }
-
-    /* ==========================================
-       MODAL STYLE INSTAGRAM / EXPOSITION
-       ========================================== */
-    .insta-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    .insta-modal.active {
-      display: flex;
-    }
-
-    .insta-modal-content {
-      background: #0f172a;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 650px;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 1.8rem;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    .insta-header {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .insta-avatar-lg {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      padding: 3px;
-      background: var(--accent-insta);
-    }
-
-    .insta-avatar-lg img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #0f172a;
-    }
-
-    .insta-details h3 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-    }
-
-    .insta-bio {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin: 0.3rem 0 0.8rem 0;
-    }
-
-    .inventions-feed {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .invention-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .invention-media {
-      width: 100%;
-      max-height: 280px;
-      object-fit: cover;
-      display: block;
-      background: #000;
-    }
-
-    .invention-body {
-      padding: 1rem;
-    }
-
-    .invention-body h5 {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .invention-body p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
   </style>
 </head>
 <body>
@@ -447,22 +333,22 @@
       <div class="tech-grid">
         <!-- Carte 1 -->
         <article class="tech-card">
-          <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80" alt="Casque VR" class="product-img">
+          <img src="assets/images/tech/appareil1.jpg" alt="Casque VR" class="product-img">
           
           <div class="card-body">
             <h3>Casque Vision-X Pro</h3>
             <div class="price-tag">À partir de 499 $</div>
 
-            <!-- Profile Badge -->
-            <div class="creator-badge" onclick="openInstaProfile('alex_tech')">
+            <!-- Badge créateur cliquable vers sa sous-page -->
+            <a href="profils/alex-tech.html" class="creator-badge">
               <div class="avatar-wrapper">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Alex" class="creator-avatar">
+                <img src="assets/images/profiles/alex.jpg" alt="Alex" class="creator-avatar">
               </div>
               <div class="creator-info">
                 <span class="creator-name">@alex_tech</span>
-                <span class="view-hint">Voir profil & démos ➔</span>
+                <span class="view-hint">Voir le profil complet ➔</span>
               </div>
-            </div>
+            </a>
 
             <a href="https://wa.me/50900000000?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20Casque%20Vision-X" target="_blank" class="btn-wa">
               Commander via WhatsApp
@@ -471,17 +357,22 @@
         </article>
       </div>
     </section>
+  </main>
 
-    <!-- Modal Profil Créateur (Insta-Style) -->
-    <div class="insta-modal" id="instaModal">
-      <div class="insta-modal-content">
-        <button class="close-btn" onclick="closeInstaProfile()">&times;</button>
-        
-        <div class="insta-header">
-          <div class="insta-avatar-lg">
-            <img id="modalAvatar" src="" alt="Avatar">
-          </div>
-          <div class="insta-details">
+  <script>
+    // Toggle Menu Hamburger
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    if (burgerBtn && mainNav) {
+      burgerBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+</html>
+
             <h3 id="modalName"></h3>
             <p id="modalBio" class="insta-bio"></p>
             <a id="modalWaBtn" href="" target="_blank" class="btn-wa" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">
