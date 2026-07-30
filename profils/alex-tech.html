@@ -1,284 +1,437 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Tech (@alex_tech) — Profil & Inventions</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
-  <!-- Chemin vers le CSS global (note le ../ pour remonter d'un dossier) -->
-  <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alex_tech • Profil Futuriste</title>
 
-  <style>
-    /* Styles spécifiques au Profil Individuel */
-    .profile-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    /* En-tête Style Instagram */
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2.5rem;
-    }
+<style>
 
-    @media (min-width: 600px) {
-      .profile-header {
-        flex-direction: row;
-        align-items: center;
-      }
-    }
+:root{
+    --bg:#050816;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08);
+    --text:#ffffff;
+    --muted:#9aa4b2;
+    --cyan:#00f7ff;
+    --violet:#7a5cff;
+    --pink:#ff00c8;
+}
 
-    .profile-avatar-wrapper {
-      position: relative;
-      padding: 3px;
-      background: var(--accent-insta);
-      border-radius: 50%;
-      width: 110px;
-      height: 110px;
-      flex-shrink: 0;
-      margin: 0 auto;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    .profile-avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--bg-card);
-    }
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
 
-    .profile-details {
-      flex: 1;
-      text-align: center;
-    }
+/* HEADER */
 
-    @media (min-width: 600px) {
-      .profile-details {
-        text-align: left;
-      }
-    }
+.profile-container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 15px;
+}
 
-    .profile-username {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
+.profile-header{
+    display:flex;
+    flex-wrap:wrap;
+    gap:35px;
+    align-items:center;
 
-    @media (min-width: 600px) {
-      .profile-username {
-        justify-content: flex-start;
-      }
-    }
+    background:var(--card);
+    backdrop-filter:blur(25px);
 
-    .verified-badge {
-      color: var(--accent-cyan);
-      font-size: 1.1rem;
-    }
+    border:1px solid var(--border);
+    border-radius:30px;
 
-    .profile-stats {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 0.8rem 0;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+    padding:30px;
+}
 
-    @media (min-width: 600px) {
-      .profile-stats {
-        justify-content: flex-start;
-      }
-    }
+.avatar-ring{
+    width:170px;
+    height:170px;
 
-    .profile-stats strong {
-      color: var(--text-main);
-    }
+    padding:4px;
 
-    .profile-bio {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
+    border-radius:50%;
 
-    /* Flux d'Inventions */
-    .inventions-feed {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+    background:linear-gradient(
+        45deg,
+        var(--cyan),
+        var(--violet),
+        var(--pink)
+    );
 
-    .invention-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      overflow: hidden;
-    }
+    animation:spin 10s linear infinite;
+}
 
-    .invention-media-container {
-      width: 100%;
-      background: #000;
-      max-height: 450px;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.avatar-ring img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #050816;
+}
 
-    .invention-media-container img,
-    .invention-media-container video {
-      width: 100%;
-      height: 100%;
-      max-height: 450px;
-      object-fit: cover;
-      display: block;
-    }
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
 
-    .invention-content {
-      padding: 1.5rem;
-    }
+.profile-details{
+    flex:1;
+}
 
-    .invention-title {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      margin-bottom: 0.4rem;
-    }
+.username-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
 
-    .invention-price {
-      color: var(--accent-cyan);
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-    }
+.username-row h1{
+    font-size:2rem;
+}
 
-    .invention-description {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
-    }
-  </style>
+.verified{
+    color:var(--cyan);
+    font-size:1.3rem;
+}
+
+.follow-btn,
+.message-btn{
+    border:none;
+    cursor:pointer;
+    border-radius:15px;
+    padding:12px 24px;
+    color:white;
+}
+
+.follow-btn{
+    background:linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--violet)
+    );
+}
+
+.message-btn{
+    background:rgba(255,255,255,.08);
+}
+
+.stats{
+    display:flex;
+    gap:30px;
+    margin:25px 0;
+}
+
+.stats div{
+    text-align:center;
+}
+
+.stats strong{
+    display:block;
+    font-size:1.2rem;
+}
+
+.stats span{
+    color:var(--muted);
+}
+
+.bio{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.contact-btn{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:white;
+
+    background:#25D366;
+
+    padding:12px 20px;
+    border-radius:15px;
+}
+
+/* STORIES */
+
+.stories{
+    display:flex;
+    gap:20px;
+    margin:30px 0;
+    overflow:auto;
+}
+
+.story{
+    text-align:center;
+}
+
+.story-circle{
+    width:90px;
+    height:90px;
+    padding:3px;
+    border-radius:50%;
+
+    background:linear-gradient(
+        45deg,
+        var(--cyan),
+        var(--pink)
+    );
+}
+
+.story-circle img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.story span{
+    display:block;
+    margin-top:8px;
+    font-size:.8rem;
+}
+
+/* TABS */
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:30px;
+}
+
+.tabs button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+/* POSTS */
+
+.posts-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.post{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    aspect-ratio:1;
+    background:#111;
+}
+
+.post img,
+.post video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.post:hover img,
+.post:hover video{
+    transform:scale(1.08);
+}
+
+.post-info{
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    opacity:0;
+    transition:.3s;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:15px;
+}
+
+.post:hover .post-info{
+    opacity:1;
+}
+
+.post-info h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:var(--cyan);
+    margin-bottom:10px;
+}
+
+.buy-btn{
+    background:linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--violet)
+    );
+
+    text-decoration:none;
+    color:white;
+
+    padding:10px 16px;
+    border-radius:12px;
+}
+
+@media(max-width:768px){
+
+.posts-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.profile-header{
+    text-align:center;
+    justify-content:center;
+}
+
+.stats{
+    justify-content:center;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <a href="../index.html" class="brand-logo">PAULYON<span>.TECH</span></a>
-    
-    <button class="burger-btn" id="burgerBtn" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<div class="profile-container">
 
-    <nav class="main-nav" id="mainNav">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../index.html#contenu-tech">Contenu Tech</a></li>
-        <li><a href="../contact.html">Contact Créateurs</a></li>
-        <li><a href="../a-propos.html">À Propos</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="profile-container">
-
-    <!-- En-tête Profil du Créateur -->
     <section class="profile-header">
-      <div class="profile-avatar-wrapper">
-        <img src="../assets/images/profiles/alex.jpg" alt="Alex Tech" class="profile-avatar">
-      </div>
 
-      <div class="profile-details">
-        <h1 class="profile-username">
-          alex_tech <span class="verified-badge" title="Créateur Vérifié">✓</span>
-        </h1>
-
-        <div class="profile-stats">
-          <span><strong>2</strong> Inventions</span>
-          <span><strong>Hardware</strong> & VR</span>
+        <div class="avatar-ring">
+            <img src="../assets/images/profiles/alex.jpg">
         </div>
 
-        <p class="profile-bio">
-          Ingénieur Hardware & Moddeur. Conception d'équipements immersifs et d'optiques VR personnalisées.
-        </p>
+        <div class="profile-details">
 
-        <!-- Bouton WhatsApp direct du créateur -->
-        <a href="https://wa.me/50900000000?text=Bonjour%20Alex,%20j'ai%20vu%20votre%20profil%20sur%20PAULYON.TECH" 
-           target="_blank" 
-           class="btn-wa">
-          💬 Contacter sur WhatsApp
-        </a>
-      </div>
-    </section>
+            <div class="username-row">
+                <h1>alex_tech</h1>
+                <span class="verified">✓</span>
 
-    <h2 class="section-title">Inventions & Démonstrations</h2>
+                <button class="follow-btn">Suivre</button>
+                <button class="message-btn">Message</button>
+            </div>
 
-    <!-- Flux des inventions -->
-    <section class="inventions-feed">
+            <div class="stats">
+                <div>
+                    <strong>124</strong>
+                    <span>Posts</span>
+                </div>
 
-      <!-- Invention 1 : Vidéo de démo -->
-      <article class="invention-card">
-        <div class="invention-media-container">
-          <video controls poster="../assets/images/tech/appareil1.jpg">
-            <source src="../assets/videos/demo-casque.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture de vidéo.
-          </video>
+                <div>
+                    <strong>1.8M</strong>
+                    <span>Followers</span>
+                </div>
+
+                <div>
+                    <strong>238</strong>
+                    <span>Following</span>
+                </div>
+            </div>
+
+            <div class="bio">
+                🚀 Ingénieur Hardware & VR<br>
+                ⚡ Créateur d'inventions futuristes<br>
+                🧠 IA • Robotique • Réalité Virtuelle
+            </div>
+
+            <a href="https://wa.me/50900000000"
+               target="_blank"
+               class="contact-btn">
+               💬 WhatsApp
+            </a>
+
         </div>
-
-        <div class="invention-content">
-          <h3 class="invention-title">Casque VR Vision-X Pro</h3>
-          <div class="invention-price">À partir de 499 $</div>
-          <p class="invention-description">
-            Démonstration en direct du protoype 4K à 120Hz avec suivi oculaire et ajustement automatique des lentilles.
-          </p>
-          <a href="https://wa.me/50900000000?text=Bonjour%20Alex,%20je%20suis%20intéressé%20par%20le%20Casque%20Vision-X" 
-             target="_blank" 
-             class="btn-wa">
-            Commander cette invention
-          </a>
-        </div>
-      </article>
-
-      <!-- Invention 2 : Photo -->
-      <article class="invention-card">
-        <div class="invention-media-container">
-          <img src="../assets/images/tech/gant.jpg" alt="Gant Haptique">
-        </div>
-
-        <div class="invention-content">
-          <h3 class="invention-title">Gant d'Interaction Haptique V1</h3>
-          <div class="invention-price">À partir de 150 $</div>
-          <p class="invention-description">
-            Capteur tactile permettant de ressentir les textures et la résistance des objets dans l'environnement virtuel.
-          </p>
-          <a href="https://wa.me/50900000000?text=Bonjour%20Alex,%20je%20suis%20intéressé%20par%20le%20Gant%20Haptique" 
-             target="_blank" 
-             class="btn-wa">
-            Commander cette invention
-          </a>
-        </div>
-      </article>
 
     </section>
 
-  </main>
+    <section class="stories">
 
-  <script src="../js/main.js"></script>
+        <div class="story">
+            <div class="story-circle">
+                <img src="../assets/images/tech/appareil1.jpg">
+            </div>
+            <span>VR</span>
+        </div>
+
+        <div class="story">
+            <div class="story-circle">
+                <img src="../assets/images/tech/gant.jpg">
+            </div>
+            <span>Haptique</span>
+        </div>
+
+    </section>
+
+    <section class="tabs">
+        <button>▦ Publications</button>
+        <button>▶ Reels</button>
+        <button>🏷 Tagged</button>
+    </section>
+
+    <section class="posts-grid">
+
+        <div class="post">
+
+            <video autoplay muted loop>
+                <source src="../assets/videos/demo-casque.mp4">
+            </video>
+
+            <div class="post-info">
+                <h3>Casque Vision-X Pro</h3>
+                <div class="price">499 $</div>
+
+                <a href="https://wa.me/50900000000"
+                   class="buy-btn">
+                   Acheter
+                </a>
+            </div>
+
+        </div>
+
+        <div class="post">
+
+            <img src="../assets/images/tech/gant.jpg">
+
+            <div class="post-info">
+                <h3>Gant Haptique V1</h3>
+                <div class="price">150 $</div>
+
+                <a href="https://wa.me/50900000000"
+                   class="buy-btn">
+                   Acheter
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
 </body>
 </html>
+```
