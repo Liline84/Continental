@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Tech (@alex_tech) — Profil & Inventions</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Chemin vers le CSS global (note le ../ pour remonter d'un dossier) -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* Styles spécifiques au Profil Individuel */
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* En-tête Style Instagram */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .profile-header {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .profile-avatar-wrapper {
+      position: relative;
+      padding: 3px;
+      background: var(--accent-insta);
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+
+    .profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--bg-card);
+    }
+
+    .profile-details {
+      flex: 1;
+      text-align: center;
+    }
+
+    @media (min-width: 600px) {
+      .profile-details {
+        text-align: left;
+      }
+    }
+
+    .profile-username {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .profile-username {
+        justify-content: flex-start;
+      }
+    }
+
+    .verified-badge {
+      color: var(--accent-cyan);
+      font-size: 1.1rem;
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    @media (min-width: 600px) {
+      .profile-stats {
+        justify-content: flex-start;
+      }
+    }
+
+    .profile-stats strong {
+      color: var(--text-main);
+    }
+
+    .profile-bio {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Flux d'Inventions */
+    .inventions-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .invention-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .invention-media-container {
+      width: 100%;
+      background: #000;
+      max-height: 450px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .invention-media-container img,
+    .invention-media-container video {
+      width: 100%;
+      height: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .invention-content {
+      padding: 1.5rem;
+    }
+
+    .invention-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .invention-price {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .invention-description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="../index.html" class="brand-logo">PAULYON<span>.TECH</span></a>
+    
+    <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#contenu-tech">Contenu Tech</a></li>
+        <li><a href="../contact.html">Contact Créateurs</a></li>
+        <li><a href="../a-propos.html">À Propos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="profile-container">
+
+    <!-- En-tête Profil du Créateur -->
+    <section class="profile-header">
+      <div class="profile-avatar-wrapper">
+        <img src="../assets/images/profiles/alex.jpg" alt="Alex Tech" class="profile-avatar">
+      </div>
+
+      <div class="profile-details">
+        <h1 class="profile-username">
+          alex_tech <span class="verified-badge" title="Créateur Vérifié">✓</span>
+        </h1>
+
+        <div class="profile-stats">
+          <span><strong>2</strong> Inventions</span>
+          <span><strong>Hardware</strong> & VR</span>
+        </div>
+
+        <p class="profile-bio">
+          Ingénieur Hardware & Moddeur. Conception d'équipements immersifs et d'optiques VR personnalisées.
+        </p>
+
+        <!-- Bouton WhatsApp direct du créateur -->
+        <a href="https://wa.me/50900000000?text=Bonjour%20Alex,%20j'ai%20vu%20votre%20profil%20sur%20PAULYON.TECH" 
+           target="_blank" 
+           class="btn-wa">
+          💬 Contacter sur WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <h2 class="section-title">Inventions & Démonstrations</h2>
+
+    <!-- Flux des inventions -->
+    <section class="inventions-feed">
+
+      <!-- Invention 1 : Vidéo de démo -->
+      <article class="invention-card">
+        <div class="invention-media-container">
+          <video controls poster="../assets/images/tech/appareil1.jpg">
+            <source src="../assets/videos/demo-casque.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéo.
+          </video>
+        </div>
+
+        <div class="invention-content">
+          <h3 class="invention-title">Casque VR Vision-X Pro</h3>
+          <div class="invention-price">À partir de 499 $</div>
+          <p class="invention-description">
+            Démonstration en direct du protoype 4K à 120Hz avec suivi oculaire et ajustement automatique des lentilles.
+          </p>
+          <a href="https://wa.me/50900000000?text=Bonjour%20Alex,%20je%20suis%20intéressé%20par%20le%20Casque%20Vision-X" 
+             target="_blank" 
+             class="btn-wa">
+            Commander cette invention
+          </a>
+        </div>
+      </article>
+
+      <!-- Invention 2 : Photo -->
+      <article class="invention-card">
+        <div class="invention-media-container">
+          <img src="../assets/images/tech/gant.jpg" alt="Gant Haptique">
+        </div>
+
+        <div class="invention-content">
+          <h3 class="invention-title">Gant d'Interaction Haptique V1</h3>
+          <div class="invention-price">À partir de 150 $</div>
+          <p class="invention-description">
+            Capteur tactile permettant de ressentir les textures et la résistance des objets dans l'environnement virtuel.
+          </p>
+          <a href="https://wa.me/50900000000?text=Bonjour%20Alex,%20je%20suis%20intéressé%20par%20le%20Gant%20Haptique" 
+             target="_blank" 
+             class="btn-wa">
+            Commander cette invention
+          </a>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
