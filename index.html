@@ -1,3 +1,573 @@
 <!DOCTYPE html>
-<title>CONTINENTAL</title>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAULYON — Exposition Tech & Inventions</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       SYSTEM TOKEN & RESET
+       ========================================== */
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: #131b2e;
+      --bg-card-hover: #1a253e;
+      --border-color: rgba(255, 255, 255, 0.08);
+      
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-insta: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      --accent-wa: #25d366;
+
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================
+       HEADER & NAVIGATION (BURGER)
+       ========================================== */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo span {
+      color: var(--accent-cyan);
+    }
+
+    /* Burger Menu */
+    .burger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .burger-btn span {
+      width: 100%;
+      height: 2px;
+      background: var(--text-main);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Navigation Drawer */
+    .main-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: #0f172a;
+      border-left: 1px solid var(--border-color);
+      padding: 6rem 2rem 2rem 2rem;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .main-nav.active {
+      right: 0;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .main-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--accent-cyan);
+    }
+
+    /* ==========================================
+       HERO & SECTIONS
+       ========================================== */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--accent-cyan);
+      border-radius: 2px;
+    }
+
+    /* ==========================================
+       GRID EXPOSITION TECH
+       ========================================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .tech-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 242, 254, 0.3);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background-color: #1e293b;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .price-tag {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Badge Créateur Style Insta */
+    .creator-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 1.2rem;
+      transition: background 0.2s;
+    }
+
+    .creator-badge:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      padding: 2px;
+      background: var(--accent-insta);
+      border-radius: 50%;
+      display: flex;
+    }
+
+    .creator-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--bg-card);
+    }
+
+    .creator-info {
+      flex: 1;
+    }
+
+    .creator-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .view-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .btn-wa {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background: #10b981;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-wa:hover {
+      background: #059669;
+    }
+
+    /* ==========================================
+       MODAL STYLE INSTAGRAM / EXPOSITION
+       ========================================== */
+    .insta-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .insta-modal.active {
+      display: flex;
+    }
+
+    .insta-modal-content {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 650px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.8rem;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .insta-header {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .insta-avatar-lg {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--accent-insta);
+    }
+
+    .insta-avatar-lg img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0f172a;
+    }
+
+    .insta-details h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+    }
+
+    .insta-bio {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0.3rem 0 0.8rem 0;
+    }
+
+    .inventions-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .invention-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .invention-media {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+    }
+
+    .invention-body {
+      padding: 1rem;
+    }
+
+    .invention-body h5 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .invention-body p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="brand-logo">PAULYON<span>.TECH</span></a>
+    
+    <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#contenu-tech">Contenu Tech</a></li>
+        <li><a href="contact.html">Contact Créateurs</a></li>
+        <li><a href="a-propos.html">À Propos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Section Principale -->
+  <main>
+    <section class="hero">
+      <h1>Pavillon des Inventions</h1>
+      <p>Explorez les prototypes, équipements hardware et créations d'inventeurs indépendants.</p>
+    </section>
+
+    <section id="contenu-tech">
+      <h2 class="section-title">Équipements & Hardware</h2>
+
+      <div class="tech-grid">
+        <!-- Carte 1 -->
+        <article class="tech-card">
+          <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80" alt="Casque VR" class="product-img">
+          
+          <div class="card-body">
+            <h3>Casque Vision-X Pro</h3>
+            <div class="price-tag">À partir de 499 $</div>
+
+            <!-- Profile Badge -->
+            <div class="creator-badge" onclick="openInstaProfile('alex_tech')">
+              <div class="avatar-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Alex" class="creator-avatar">
+              </div>
+              <div class="creator-info">
+                <span class="creator-name">@alex_tech</span>
+                <span class="view-hint">Voir profil & démos ➔</span>
+              </div>
+            </div>
+
+            <a href="https://wa.me/50900000000?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20Casque%20Vision-X" target="_blank" class="btn-wa">
+              Commander via WhatsApp
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Modal Profil Créateur (Insta-Style) -->
+    <div class="insta-modal" id="instaModal">
+      <div class="insta-modal-content">
+        <button class="close-btn" onclick="closeInstaProfile()">&times;</button>
+        
+        <div class="insta-header">
+          <div class="insta-avatar-lg">
+            <img id="modalAvatar" src="" alt="Avatar">
+          </div>
+          <div class="insta-details">
+            <h3 id="modalName"></h3>
+            <p id="modalBio" class="insta-bio"></p>
+            <a id="modalWaBtn" href="" target="_blank" class="btn-wa" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">
+              💬 Contacter le créateur
+            </a>
+          </div>
+        </div>
+
+        <h4 style="font-family: var(--font-heading); font-size: 1.1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">Démos & Inventions</h4>
+
+        <div id="modalGallery" class="inventions-feed"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Toggle Menu Hamburger
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    burgerBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // Données Créateurs / Inventions
+    const creatorsData = {
+      "alex_tech": {
+        name: "Alexandre V.",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+        bio: "Ingénieur Hardware & Développeur VR. Projets custom et optiques immersives.",
+        whatsapp: "50900000000",
+        inventions: [
+          {
+            type: "image",
+            src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80",
+            title: "Casque Vision-X (Édition Prototype)",
+            desc: "Affichage Dual OLED 4K avec tracker haptique intégré."
+          },
+          {
+            type: "image",
+            src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+            title: "Module Capteur Gesture-v2",
+            desc: "Permet la détection des mouvements de doigts en temps réel."
+          }
+        ]
+      }
+    };
+
+    // Logique Modal
+    const instaModal = document.getElementById('instaModal');
+
+    function openInstaProfile(id) {
+      const creator = creatorsData[id];
+      if (!creator) return;
+
+      document.getElementById('modalAvatar').src = creator.avatar;
+      document.getElementById('modalName').textContent = creator.name;
+      document.getElementById('modalBio').textContent = creator.bio;
+      document.getElementById('modalWaBtn').href = `https://wa.me/${creator.whatsapp}`;
+
+      const gallery = document.getElementById('modalGallery');
+      gallery.innerHTML = '';
+
+      creator.inventions.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'invention-card';
+        card.innerHTML = `
+          <img src="${item.src}" alt="${item.title}" class="invention-media">
+          <div class="invention-body">
+            <h5>${item.title}</h5>
+            <p>${item.desc}</p>
+          </div>
+        `;
+        gallery.appendChild(card);
+      });
+
+      instaModal.classList.add('active');
+    }
+
+    function closeInstaProfile() {
+      instaModal.classList.remove('active');
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target === instaModal) closeInstaProfile();
+    });
+  </script>
+</body>
 </html>
