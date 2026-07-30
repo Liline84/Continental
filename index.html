@@ -506,29 +506,17 @@
       mainNav.classList.toggle('active');
     });
 
-    // Données Créateurs / Inventions
-    const creatorsData = {
-      "alex_tech": {
-        name: "Alexandre V.",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
-        bio: "Ingénieur Hardware & Développeur VR. Projets custom et optiques immersives.",
-        whatsapp: "50900000000",
-        inventions: [
-          {
-            type: "image",
-            src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80",
-            title: "Casque Vision-X (Édition Prototype)",
-            desc: "Affichage Dual OLED 4K avec tracker haptique intégré."
-          },
-          {
-            type: "image",
-            src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-            title: "Module Capteur Gesture-v2",
-            desc: "Permet la détection des mouvements de doigts en temps réel."
-          }
-        ]
-      }
-    };
+    // <!-- Badge créateur cliquable vers sa sous-page -->
+<a href="profils/alex-tech.html" class="creator-badge">
+  <div class="avatar-wrapper">
+    <img src="assets/images/profiles/alex.jpg" alt="Alex" class="creator-avatar">
+  </div>
+  <div class="creator-info">
+    <span class="creator-name">@alex_tech</span>
+    <span class="view-hint">Voir le profil complet ➔</span>
+  </div>
+</a>
+
 
     // Logique Modal
     const instaModal = document.getElementById('instaModal');
